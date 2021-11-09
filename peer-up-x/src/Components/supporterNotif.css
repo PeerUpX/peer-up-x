@@ -1,0 +1,16 @@
+text {
+    margin: 0px 50px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 27px;
+    letter-spacing: 0em;
+}
+
+button {
+    border-radius: 50px;
+    background: #C4C4C4;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 50px;
+}
