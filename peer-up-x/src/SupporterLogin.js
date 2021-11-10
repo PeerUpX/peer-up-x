@@ -3,6 +3,7 @@ import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
 import { useAuth } from './contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 
 export default function SupporterLogin() {
   const emailRef = useRef()
