@@ -9,7 +9,11 @@
     "firebase": "^9.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
     "react-router-dom": "^6.0.1",
+=======
+    "react-router": "^6.0.1",
+>>>>>>> e4df3a0f828fd8d3183da9bd93a3598dc27243a8
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
