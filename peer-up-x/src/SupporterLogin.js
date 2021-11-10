@@ -1,7 +1,65 @@
-import styled from 'styled-components'
-import {useState} from "react"
+//import styled from 'styled-components'
+import React, {useState, useRef} from "react"
+import {Form, Card, Alert, Button} from "react-bootstrap"
+import { useAuth } from './contexts/AuthContext'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Container = styled.div`
+export default function SupporterLogin() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      setError("");
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+      console.log("login success");
+      navigate("/dashboard")
+    } catch {
+      setError("Failed to sign in");
+    }
+    //setLoading(false);
+  }
+  
+  return (
+    <>
+    <Card>
+      <Card.Body>
+        <h2 className="text-center mb-4">Log In</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
+          <Form.Group id="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" ref={emailRef} required />
+          </Form.Group>
+          <Form.Group id="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" ref={passwordRef} required />
+          </Form.Group>
+          <Button disabled={loading} className="w-100" type="submit" padding="1rem">
+            Log in
+          </Button>
+        </Form>
+        <div className="w-100 text-center mt-3">
+            <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+      </Card.Body>
+    </Card>
+    <div className="w-100 text-center mt-2">
+      Need an account? <Link to="/signup">Sign up</Link>
+    </div>
+  </>
+  );
+}
+
+
+
+/*const Container = styled.div`
   display: flex;
   min-height: 100vh;
   align-items: center;
@@ -34,29 +92,19 @@ const Submit = styled.button`
   border-radius: 5px; 
   margin-top: 10px;
   margin-bottom: 10px;
-`
-function SupporterLogin() {
+`*/
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const onSubmit = () => {
-    console.log(username);
-    console.log(password);
-  }
-  
-  return (
+/*
     <Container>
       <ColumnContainer>
-        <h1>Supporter Login</h1>
+        <h1>Supporter Signup</h1>
         <p>Username</p>
-        <Input type="text" value={username} onChange = {(e)=>setUsername(e.target.value)}/>
+        <Input type="text" ref={emailRef} required/>
         <p>Password</p>
-        <Input type="password" value = {password} onChange = {(e)=>setPassword(e.target.value)}/>
-        <Submit onClick={onSubmit}>Login</Submit>
+        <Input type="password" ref={passwordRef} required/>
+        <p>Password Confirmation</p>
+        <Input type="password" ref={passwordConfirmRef} required/>
+        <Submit type="submit">Login</Submit>
       </ColumnContainer>
-    </Container>  
-  );
-}
-
-export default SupporterLogin;
+    </Container> 
+*/
