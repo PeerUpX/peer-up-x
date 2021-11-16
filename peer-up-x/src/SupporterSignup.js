@@ -28,7 +28,7 @@ export default function SupporterSignup() {
       setError("Failed to create an account");
     }
 
-    //setLoading(false);
+    setLoading(false);
   }
   
   return (

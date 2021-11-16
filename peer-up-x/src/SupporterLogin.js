@@ -24,7 +24,7 @@ export default function SupporterLogin() {
     } catch {
       setError("Failed to sign in");
     }
-    //setLoading(false);
+    setLoading(false);
   }
   
   return (
