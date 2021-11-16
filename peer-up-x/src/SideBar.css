@@ -1,0 +1,25 @@
+.full-page-col{
+  display: flex;
+  flex-direction: column;
+  background-color: #C4C4C4;
+  width: 40vh;
+}
+.text-medium-light{
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+}
+.text-medium-light:hover{
+  color: black;
+}
+.grey-text:hover{
+  color: black;
+  font-size: 28px;
+}
+.vertical-margin{
+  margin-top: 50px;
+}
+.grey-text{
+  color: #00000094;
+}
