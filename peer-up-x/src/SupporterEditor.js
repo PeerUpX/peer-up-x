@@ -3,6 +3,8 @@ import { useState } from 'react';
 export default function SupporterEditor(props){
   const [editMode, setEditMode] = useState(false);
 
+
+
   const InfoParagraph = ({header, subtitle}) => {
     return(
       <div className = "about-box">
@@ -16,7 +18,7 @@ export default function SupporterEditor(props){
     return(
       <div className = "about-box">
         <h1 className = "text-medium-bold">{header}</h1>
-        <input type="text" className = "text-small" placeholder = {subtitle} ></input>
+        <textarea type="text" className = "text-small" rows = "3" placeholder = {subtitle}></textarea>
       </div>
     )
   }
