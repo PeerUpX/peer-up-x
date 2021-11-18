@@ -1,14 +1,15 @@
-import './SideBar.css';
+import styles from './SideBar.module.css';
 import { Link } from 'react-router-dom';
 
 export default function SideBar(props){
   return(
-    <div className = "full-page-col">
+    <div className = {styles.fullPageCol}>
+      <img src = "/peerup_logo_square.png" alt = "Logo" width = "80" height = "80" className={styles.logo}/>
       <Link to = "/dashboard" 
-        className = {`text-medium-light vertical-margin ${props.profile ? "grey-text": ""}`}>Dashboard
+        className = {`${styles.textMediumLight} ${styles.verticalMargin} ${props.profile? styles.greyText: ''}`}>Dashboard
       </Link>
       <Link to = "/profile"
-        className = {`text-medium-light vertical-margin ${props.dashboard ? "grey-text": ""}`}>Profile
+        className = {`${styles.textMediumLight} ${styles.verticalMargin} ${props.dashboard? styles.greyText: ''}`}>Profile
       </Link>
     </div>
   )

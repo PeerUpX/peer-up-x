@@ -1,25 +1,30 @@
-.full-page-col{
+.fullPageCol{
   display: flex;
   flex-direction: column;
   background-color: #C4C4C4;
-  width: 40vh;
+  min-width: 40vh;
+  margin-right: 10px;
+  min-height: 100%;
 }
-.text-medium-light{
+.textMediumLight{
   font-size: 24px;
   font-weight: 400;
   text-decoration: none;
   color: black;
 }
-.text-medium-light:hover{
+.textMediumLight:hover{
   color: black;
 }
-.grey-text:hover{
+.greyText:hover{
   color: black;
   font-size: 28px;
 }
-.vertical-margin{
+.verticalMargin{
   margin-top: 50px;
 }
-.grey-text{
+.greyText{
   color: #00000094;
+}
+.logo{
+  align-self: center;
 }

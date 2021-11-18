@@ -1,17 +1,17 @@
-.page-container{
+.pageContainer{
   display: flex;
   flex-direction: row;
   width: 100vw;
   height: 100vh;
 }
-.right-content-container{
+.rightContentContainer{
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.row-box{
+.rowBox{
   display:flex;
   flex-direction: row;
   background-color: #C4C4C480;
@@ -19,18 +19,17 @@
   padding-left: 3%;
   padding-right: 3%;
 }
-.main-info-col-box{
+.mainInfoColBox{
   display: flex;
   flex-direction: column;
   margin: 15px;
   align-items: center;
 }
-.circle-container{
+.circleContainer{
   display: inline-block;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -38,7 +37,7 @@
 .one {
   background-image: url('https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg');
 }
-.edit-button{
+.editButton{
   background-color: #C4C4C4;
   display: flex;
   align-items: center;
@@ -47,7 +46,7 @@
   height: 75px;
 
 }
-.about-box{
+.aboutBox{
   background-color: #C4C4C4;
   display: flex;
   flex-direction: column;
@@ -55,26 +54,26 @@
   padding: 10px;
   width: 90%;
 }
-.text-large{
+.textLarge{
   margin: 0;
   font-size: 48px;
   font-weight: 700;
 }
-.text-medium-bold{
+.textMediumBold{
   margin: 0;
   font-size: 24px;
   font-weight: 700;
 }
-.text-medium-light{ 
+.textMediumLight{ 
   font-size: 24px;
   font-weight: 400;
 }
-.text-small{
+.textSmall{
   margin: 0;
   font-size: 16px;
   font-weight: 400;
 }
-.input-width{
+.inputWidth{
   width: 300px;
   margin: 5px;
 }

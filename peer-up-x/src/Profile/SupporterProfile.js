@@ -1,13 +1,13 @@
-import './SupporterProfile.css';
-import SideBar from './SideBar';
+import styles from './SupporterProfile.module.css';
+import SideBar from '../SideBar';
 import SupporterEditor from './SupporterEditor';
 export default function SupporterProfile(props){
 
   
   return(
-    <div className = "page-container">
+    <div className = {styles.pageContainer}>
       <SideBar profile = {true} dashboard = {false}/>
-      <div className = "right-content-container">
+      <div className = {styles.rightContentContainer}>
         <SupporterEditor/>
       </div>
     </div>

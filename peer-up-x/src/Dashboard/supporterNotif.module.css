@@ -1,4 +1,12 @@
-text {
+.notifContainer{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 100%;
+}
+
+.notifText {
     margin: 0px 50px;
     font-size: 18px;
     font-style: normal;
@@ -7,7 +15,7 @@ text {
     letter-spacing: 0em;
 }
 
-button {
+.notifButton {
     border-radius: 50px;
     background: #C4C4C4;
     border: none;
