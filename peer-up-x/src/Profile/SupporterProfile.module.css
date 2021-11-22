@@ -5,11 +5,15 @@
   height: 100vh;
 }
 .rightContentContainer{
+  position: absolute;
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 400px;
+  top: 0px;
+  left: 130px;
 }
 .rowBox{
   display:flex;
