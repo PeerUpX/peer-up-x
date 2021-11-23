@@ -7,13 +7,13 @@
 .rightContentContainer{
   position: absolute;
   display: flex;
-  width: 100%;
+  width: 70%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 400px;
-  top: 0px;
-  left: 130px;
+  top: -30px;
+  left: 150px;
 }
 .rowBox{
   display:flex;
