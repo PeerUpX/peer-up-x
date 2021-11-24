@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
 import { useAuth } from './contexts/AuthContext'
 import {Link} from "react-router-dom"
+import styles from "./Login.module.css";
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -28,15 +29,15 @@ export default function ForgotPassword() {
     <>
     <Card>
       <Card.Body>
-        <h2 className="text-center mb-4">Password Reset</h2>
+        <h2 className={styles.header3}>Password Reset</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         {message && <Alert variant="success">{message}</Alert>}
         <Form onSubmit={handleSubmit}>
-          <Form.Group id="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" ref={emailRef} required />
+          <Form.Group className={styles.form}>
+            {/* <Form.Label>Email</Form.Label> */}
+            <Form.Control type="email" placeholder="Email" ref={emailRef} required />
           </Form.Group>
-          <Button disabled={loading} className="w-100" type="submit" padding="1rem">
+          <Button disabled={loading} className={styles.button2} type="submit" padding="1rem">
             Reset Password
           </Button>
         </Form>

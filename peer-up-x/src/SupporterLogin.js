@@ -3,7 +3,8 @@ import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
 import { useAuth } from './contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from "./SupporterLogin.module.css";
+import styles from "./Login.module.css";
+import {ReactComponent as Logo} from "./peerUpLogo.svg";
 
 export default function SupporterLogin() {
   const emailRef = useRef()
@@ -31,7 +32,7 @@ export default function SupporterLogin() {
     <>
     <Card>
       <Card.Body>
-        <h2 className={styles.header2}>Peer Up</h2>
+        <h2 className={styles.header2}>PeerUp <Logo/></h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className={styles.form}>

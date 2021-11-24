@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
 import { useAuth } from './contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import styles from "./Login.module.css";
 
 export default function SupporterSignup() {
   const emailRef = useRef()
@@ -35,22 +36,22 @@ export default function SupporterSignup() {
     <>
     <Card>
       <Card.Body>
-        <h2 className="text-center mb-4">Sign Up</h2>
+        <h2 className={styles.header3}>Sign Up</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
-          <Form.Group id="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" ref={emailRef} required />
+          <Form.Group className={styles.form}>
+            {/* <Form.Label>Email</Form.Label> */}
+            <Form.Control type="email" placeholder="Email" ref={emailRef} required />
           </Form.Group>
-          <Form.Group id="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" ref={passwordRef} required />
+          <Form.Group className={styles.form}>
+            {/* <Form.Label>Password</Form.Label> */}
+            <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
           </Form.Group>
-          <Form.Group id="password-confirm">
-            <Form.Label>Password Confirmation</Form.Label>
-            <Form.Control type="password" ref={passwordConfirmRef} required />
+          <Form.Group className={styles.form}>
+            {/* <Form.Label>Password Confirmation</Form.Label> */}
+            <Form.Control type="password" placeholder="Confirm password" ref={passwordConfirmRef} required />
           </Form.Group>
-          <Button disabled={loading} className="w-100" type="submit" padding="1rem">
+          <Button disabled={loading} className={styles.button} type="submit" padding="1rem">
             Sign Up
           </Button>
         </Form>
