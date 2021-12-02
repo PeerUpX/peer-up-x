@@ -79,7 +79,7 @@ export default function LandingPage() {
                   <Card.Title>{supporterData.name}</Card.Title>
                   <Card.Text>{supporterData.languages}</Card.Text>
                   <Card.Text>{supporterData.specialty}</Card.Text>
-                  <Button variant="secondary"  onClick={() => window.open('https://chat-testerclient.herokuapp.com/')}>Chat Now</Button>
+                  <Button variant="secondary">Chat Unavailable</Button>
                 </Card.Body>
               </Card>
             </Col>
