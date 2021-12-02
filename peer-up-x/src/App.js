@@ -3,6 +3,7 @@ import SupporterLogin from './SupporterLogin';
 import SupporterSignup from './SupporterSignup';
 import SupporterDashboard from './Dashboard/SupporterDashboard'
 import SupporterProfile from './Profile/SupporterProfile';
+import UserDashboard from './User/UserDashboard';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import {useAuth} from './contexts/AuthContext';
 import ForgotPassword from './ForgotPassword';
@@ -38,7 +39,13 @@ function App() {
                 <SupporterProfile />
               </PrivateRoute>
               }
-            />           
+            /> 
+            <Route
+              path="/user"
+              element={
+                <UserDashboard />
+              }
+            />            
         </Routes>
         </AuthProvider>
       </Router>
