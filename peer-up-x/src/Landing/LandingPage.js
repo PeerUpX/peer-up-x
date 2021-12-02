@@ -9,7 +9,7 @@ export default function LandingPage() {
             <h1 className={styles.header1}>Welcome to Peer Up</h1>
             <h2 className = {styles.header2}>Flexible, anonymous, and free peer-to-peer support at campuses nation-wide.</h2>
             <div className = {styles.userType}>
-                <Link to = "/login" className={styles.button}>Student</Link>
+                <Link to = "/user" className={styles.button}>Student</Link>
                 <Link to = "/login" className={styles.button}>Supporter</Link>
             </div>
         </div>
