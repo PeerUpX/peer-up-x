@@ -1,9 +1,3 @@
-.time-table {
-    position: relative;
-    top: 350px;
-    right: 10px;
-    width: 100%;
-}
 
 .time-change {
     position: relative;
@@ -11,8 +5,3 @@
     width: 100%;
 }
 
-.timebtn {
-    position: relative;
-    top: 500px;
-    right: 900px;
-}

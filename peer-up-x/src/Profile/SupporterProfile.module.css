@@ -1,27 +1,24 @@
 .pageContainer{
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw; 
+  min-height: 100vh;
 }
 .rightContentContainer{
-  position: absolute;
   display: flex;
   width: 70%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
-  top: -30px;
-  left: 150px;
 }
 .rowBox{
   display:flex;
   flex-direction: row;
+  justify-content: flex-start;
   background-color: #C4C4C480;
-  width:fit-content;
   padding-left: 3%;
   padding-right: 3%;
+  max-width: 80%;
 }
 .mainInfoColBox{
   display: flex;
@@ -56,12 +53,13 @@
   flex-direction: column;
   margin: 15px;
   padding: 10px;
-  width: 90%;
+  width: 100%;
 }
 .textLarge{
   margin: 0;
   font-size: 48px;
   font-weight: 700;
+  white-space: nowrap;
 }
 .textMediumBold{
   margin: 0;
@@ -80,4 +78,7 @@
 .inputWidth{
   width: 300px;
   margin: 5px;
+}
+.timeBtn{
+  padding-top:0px;
 }
