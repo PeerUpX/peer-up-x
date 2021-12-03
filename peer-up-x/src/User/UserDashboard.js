@@ -14,24 +14,29 @@ export default function LandingPage() {
   //   }, [])
   const supporterData = [
     {
-      name: "John Descartes",
+      name: "Apple",
       languages: "English, French",
       specialty: "studies,anxiety",
     },
     {
-      name: "Vinay Goswami",
+      name: "Pear",
       languages: "Hindi, English",
       specialty: "studies,coping,relationships",
     },
     {
-      name: "Bill Peroda",
+      name: "Oolong",
       languages: "English, German",
       specialty: "studies,anxiety",
     },
     {
-      name: "Steven Wang",
+      name: "Sleepy Bruin",
       languages: "English, Chinese",
       specialty: "studies,coping,relationships",
+    },
+    {
+      name: "Guava",
+      languages: "English, Spanish",
+      specialty: "academics,coping",
     },
    
   ];

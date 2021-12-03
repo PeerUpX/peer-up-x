@@ -7,7 +7,7 @@
   min-height: 100%;
 }
 .textMediumLight{
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 400;
   text-decoration: none;
   color: black;
@@ -17,10 +17,11 @@
 }
 .greyText:hover{
   color: black;
-  font-size: 28px;
+  font-size: 32px;
 }
 .verticalMargin{
   margin-top: 50px;
+  text-align: center;
 }
 .greyText{
   color: #00000094;

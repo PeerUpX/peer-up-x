@@ -12,6 +12,7 @@
   align-items: center;
 }
 .rowBox{
+  border-radius: 2%;
   display:flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -36,7 +37,7 @@
   background-size: cover;
 }
 .one {
-  background-image: url('https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg');
+  background-image: url('https://images.squarespace-cdn.com/content/v1/6007e076f931384d59d5375e/1611129105339-2QGQBDXIMQOHFO3T5XVF/peer+up.png?format=1500w');
 }
 .editButton{
   background-color: #C4C4C4;
@@ -48,6 +49,7 @@
 
 }
 .aboutBox{
+  border-radius: 2%;
   background-color: #C4C4C4;
   display: flex;
   flex-direction: column;
@@ -69,6 +71,7 @@
 .textMediumLight{ 
   font-size: 24px;
   font-weight: 400;
+  text-align: center;
 }
 .textSmall{
   margin: 0;

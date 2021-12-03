@@ -3,8 +3,8 @@ import { useState } from 'react';
 export default function SupporterEditor(props){
   const [editMode, setEditMode] = useState(false);
 
-  const [name, changeName] = useState("Joe Bruin");
-  const [spec, changeSpec] = useState("relationships, coping");
+  const [name, changeName] = useState("Oolong");
+  const [spec, changeSpec] = useState("academics, coping");
   const [lang, changeLang] = useState("English/Chinese");
   const [about, changeAbout] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
   const [why, changeWhy] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
