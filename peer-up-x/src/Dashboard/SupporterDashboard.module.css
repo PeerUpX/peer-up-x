@@ -1,0 +1,44 @@
+* {
+    font-family: Lato;
+    font-style: normal;
+}
+.mainHeader {
+    font-style: normal;
+    font-weight: bold; 
+    margin: 5% 5% 3% 5%;
+}
+.pageContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+  }
+
+.header {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0 5%;
+}
+.notifs {
+    min-width: 100%;
+    margin: 0 5%;
+}
+.length {
+    margin: auto 5%;
+}
+.stats {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 36px;
+    letter-spacing: 0em;
+    margin: 2% auto auto 5%;
+}
+
+.line {
+    width: 70%;
+    margin: 3% 5%;
+}
+

@@ -1,0 +1,31 @@
+.fullPageCol{
+  display: flex;
+  flex-direction: column;
+  background-color: #C4C4C4;
+  min-width: 40vh;
+  margin-right: 10px;
+  min-height: 100%;
+}
+.textMediumLight{
+  font-size: 32px;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+}
+.textMediumLight:hover{
+  color: black;
+}
+.greyText:hover{
+  color: black;
+  font-size: 32px;
+}
+.verticalMargin{
+  margin-top: 50px;
+  text-align: center;
+}
+.greyText{
+  color: #00000094;
+}
+.logo{
+  align-self: center;
+}

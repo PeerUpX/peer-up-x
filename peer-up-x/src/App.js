@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { AuthProvider } from './contexts/AuthContext';
+import SupporterLogin from './SupporterLogin';
+import SupporterSignup from './SupporterSignup';
+import SupporterDashboard from './Dashboard/SupporterDashboard'
+import SupporterProfile from './Profile/SupporterProfile';
+import UserDashboard from './User/UserDashboard';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import {useAuth} from './contexts/AuthContext';
+import ForgotPassword from './ForgotPassword';
+import LandingPage from './Landing/LandingPage';
+
+//className="d-flex align-items-center justify-content-center"
+function PrivateRoute({ children }) {
+  const {currentUser} = useAuth();
+  return currentUser ? children : <Navigate to="/login" />;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <AuthProvider>
+          <Routes>
+              <Route exact path="/" element={<LandingPage/>} />
+              <Route exact path="/signup" element={<SupporterSignup/>} />
+              <Route exact path="/login" element={<SupporterLogin/>} />
+              <Route exact path="/forgot-password" element={<ForgotPassword/>} />
+            <Route
+              path="/dashboard"
+              element={
+              <PrivateRoute>
+                <SupporterDashboard />
+              </PrivateRoute>
+              }
+            />    
+            <Route
+              path="/profile"
+              element={
+              <PrivateRoute>
+                <SupporterProfile />
+              </PrivateRoute>
+              }
+            /> 
+            <Route
+              path="/user"
+              element={
+                <UserDashboard />
+              }
+            />            
+        </Routes>
+        </AuthProvider>
+      </Router>
   );
 }
 

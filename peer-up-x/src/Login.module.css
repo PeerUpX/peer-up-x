@@ -1,0 +1,36 @@
+.header2 {
+    font-size: 64px;
+    font-weight: bold; 
+    text-align: center;
+    width: 70%;
+    margin: 3% auto 1% auto;
+}
+
+.form {
+    width: 35%;
+    padding: 10px;
+    margin: auto;
+    font-size: 24px;
+    color: black;
+}
+
+.button {
+    width: 10%;
+    margin-top: 1%;
+    margin-left: 45%;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.button2 {
+    width: fit-content;
+    margin-left: 45%;
+    margin-top: 1%;
+}
+
+.header3 {
+    font-size: 50px;
+    text-align: center;
+    width: 70%;
+    margin: 3% auto 1% auto;
+}

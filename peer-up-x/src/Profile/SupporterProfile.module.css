@@ -1,0 +1,87 @@
+.pageContainer{
+  display: flex;
+  flex-direction: row;
+  width: 100vw; 
+  min-height: 100vh;
+}
+.rightContentContainer{
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rowBox{
+  border-radius: 2%;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #C4C4C480;
+  padding-left: 3%;
+  padding-right: 3%;
+  max-width: 80%;
+}
+.mainInfoColBox{
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: center;
+}
+.circleContainer{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.one {
+  background-image: url('https://images.squarespace-cdn.com/content/v1/6007e076f931384d59d5375e/1611129105339-2QGQBDXIMQOHFO3T5XVF/peer+up.png?format=1500w');
+}
+.editButton{
+  background-color: #C4C4C4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+
+}
+.aboutBox{
+  border-radius: 2%;
+  background-color: #C4C4C4;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  padding: 10px;
+  width: 100%;
+}
+.textLarge{
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.textMediumBold{
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.textMediumLight{ 
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+.textSmall{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+.inputWidth{
+  width: 300px;
+  margin: 5px;
+}
+.timeBtn{
+  padding-top:0px;
+}
