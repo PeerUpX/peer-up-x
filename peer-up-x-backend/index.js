@@ -3,6 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const supporters = require("./routes/supporters");
 const connectDB = require("./db");
+const cors = require('cors');
+
+app.use(
+  cors({
+    origin: "*",
+  })
+)
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
