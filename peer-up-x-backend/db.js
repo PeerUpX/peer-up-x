@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
-const URI = "mongodb+srv://peerUpUser:peerUpPassword@peerupx-cluster0.lahfp.mongodb.net/peerUpDatabase?retryWrites=true&w=majority"
+require('dotenv').config()
+const URI = process.env.URI
 
 const connectDB = async () => {
     await mongoose.connect(URI, {
