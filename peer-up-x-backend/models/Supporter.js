@@ -10,7 +10,8 @@ const SupporterSchema = new Schema({
     story : String,
     school : String, // might add later enum option
     specialty: String, // options
-    isChatting: Boolean
+    isChatting: Boolean,
+    password: {type: String, required: true}
 })
 
 module.exports = mongoose.model('supporter', SupporterSchema);

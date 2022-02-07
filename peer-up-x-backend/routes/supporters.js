@@ -1,10 +1,25 @@
-const express = require ('express');
+const express = require('express');
+const bcrypt = require('bcrypt');
 const Supporter = require("../models/Supporter");
 
 const router = express.Router();
 
-router.post("/register", (req, res) => {
-      
+const hashPassword = async (password, saltRounds = 10) => {
+  try {
+      // Generate a salt
+      const salt = await bcrypt.genSalt(saltRounds);
+
+      // Hash password
+      return await bcrypt.hash(password, salt);
+  } catch (error) {
+      console.log(error);
+  }
+
+  // Return null if error
+  return null;
+};
+
+router.post("/register", async(req, res) => {
     Supporter.findOne({
         $or:
             [{"email":req.body.email}]
@@ -14,28 +29,58 @@ router.post("/register", (req, res) => {
                 message: "This user already exists!"
             })
         }
+        var hashedPassword;
+        // generate salt to hash password
+        const salt = await bcrypt.genSalt(10);
+      // now we set user password to hashed password
+        hashedPassword = await bcrypt.hash(user.password, salt);
+        console.log("hashed password")
+        console.log(hashedPassword);
+        // hashPassword(req.body.password).then((x) => {
+        //   console.log("hello"); console.log(x); hashedPassword = x
+        // });
+        // console.log("hashed password");
+        // console.log(hashedPassword);
+      
+        // if(hashedPassword == null){
+        //   console.log("error hashing password");
+        // }
 
         const newSupporter = new Supporter({
-            nickname: req.body.nickname,
-            isAvailable: false, //assuming we want the user to sign in after registration
-            availabilityHours: req.body.availabilityHours, //!
-            story : req.body.story,
-            school : req.body.school,
-            specialty: req.body.specialty,
-            isChatting: false,
-            email: req.body.email
+          nickname: req.body.nickname,
+          isAvailable: false, //assuming we want the user to sign in after registration
+          availabilityHours: req.body.availabilityHours, 
+          story : req.body.story,
+          school : req.body.school,
+          specialty: req.body.specialty,
+          isChatting: false,
+          email: req.body.email,
+          password: hashedPassword
+      }) //making sure our user input is in the right format
+        res.json(404, null);
+        
 
-        }) //making sure our user input is in the right format
-    
-        newSupporter.save()
-            .catch(err => {
-                return res.status(500).json({
-                    message: "Internal server error, please try again later!",
-                    error: err
-                })
-            });
+        // const newSupporter = new Supporter({
+        //     nickname: req.body.nickname,
+        //     isAvailable: false, //assuming we want the user to sign in after registration
+        //     availabilityHours: req.body.availabilityHours, 
+        //     story : req.body.story,
+        //     school : req.body.school,
+        //     specialty: req.body.specialty,
+        //     isChatting: false,
+        //     email: req.body.email,
+        //     password: hashedPassword
+        // }) //making sure our user input is in the right format
 
-        res.json(201, newSupporter);
+        // newSupporter.save()
+        //     .catch(err => {
+        //         return res.status(500).json({
+        //             message: "Internal server error, please try again later!",
+        //             error: err
+        //         })
+        //     });
+
+        // res.json(201, newSupporter);
       
     })
 
