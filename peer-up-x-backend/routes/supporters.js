@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const Supporter = require("../models/Supporter");
+const connectDB = require('../db');
 
 const router = express.Router();
 
@@ -48,6 +49,47 @@ router.post("/register", async (req, res) => {
 
   res.json(201, newSupporter);
 
+});
+
+router.post("/login", async (req, res) => {
+  // accepting input credentials
+  const inputEmail = req.body.email;
+  const inputPassword = req.body.password;
+
+  // looking for supporter with inputEmail in database
+  const supporterTryingToLogin = await Supporter.findOne({"email": inputEmail}).catch(err => {
+    // error thrown by mongo while finding a supporter
+    return res.status(500).json({
+      message: "Internal server error, please try again later!",
+      error: err
+    })
+  });;
+
+  // checking if no supporters with that email exist
+  if(supporterTryingToLogin == undefined){
+    return res.status(401).json({
+      message: "Invalid email ID."
+    });
+  }
+
+  // comparing inputPassword with encrypted password from database
+  bcrypt.compare(inputPassword, supporterTryingToLogin.password, function(err, result) {
+      if(err){
+        return res.status(500).json({
+          message: "Bcrypt encountered an error comparing passwords."
+        });
+      }
+      if(result == true){
+        res.json(200);
+      }
+      else{
+        // returning 401 if password is invalid
+        return res.status(401).json({
+          message: "Invalid password."
+        });
+      }
+  });
+ 
 });
 
 router.get('/fetch/:email', function (req, res) {
