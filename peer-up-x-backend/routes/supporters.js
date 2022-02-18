@@ -4,6 +4,7 @@ const Supporter = require("../models/Supporter");
 const connectDB = require('../db');
 
 const router = express.Router();
+const env = process.env.NODE_ENV || 'development';
 
 const hashPassword = async (password, saltRounds = 10) => {
   try {
@@ -80,6 +81,12 @@ router.post("/login", async (req, res) => {
         });
       }
       if(result == true){
+        res.cookie("email", supporterTryingToLogin.email, {
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          secure: ((env === 'development') ? false : true),
+          httpOnly: true,
+          sameSite: 'lax'
+      });
         res.json(200);
       }
       else{
@@ -113,6 +120,14 @@ router.get('/fetch/:email', function (req, res) {
 
 //still needs testing; but could be connected to edit profile potentially
 router.put('/update/:supporterID', function (req, res) {
+  if(!req.cookies.email){
+    return res.status(401).json({
+      message: "You are not authorized to use this endpoint."
+    });
+  }
+  return res.status(200).send({
+    message: "Authorized"
+  })
   Supporter.findOneAndUpdate({ // search by an id
     $or:
       [{ "_id": req.params.supporterID }]
@@ -155,6 +170,15 @@ router.get('/fetchAll', function (req, res) {
     }
   })
 })
+
+router.get("/logout", async (req, res) => {
+  console.log("before clearing cookie");
+  res.clearCookie("email");
+  console.log("after clearing cookie");
+  return res.status(201).send({
+    message: "cookie erased"
+  });
+});
 
 //TODO 11/17: change fetch/:email to fetch/:id; consider adding a delete route
 
