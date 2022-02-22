@@ -23,19 +23,34 @@ const hashPassword = async (password, saltRounds = 10) => {
 
 router.post("/register", async (req, res) => {
 
+  const existingSuporter = await Supporter.findOne({"email": req.body.email}).catch(err => {
+    // error thrown by mongo while finding a supporter
+    return res.status(500).json({
+      message: "Internal server error, please try again later!",
+      error: err
+    })
+  });;
+
+  // if a supporter with the email id already exists
+  if(existingSuporter != undefined){
+    return res.status(409).json({
+      message: "A supporter with this email id already exists."
+    });
+  }
+
   // generating a hashed version of the password
   const hashedPassword = await hashPassword(req.body.password); 
 
   // creating the supporter object
   const newSupporter = new Supporter({
     nickname: req.body.nickname,
-    isAvailable: false, // assuming we want the user to sign in after registration
     availabilityHours: req.body.availabilityHours,
     story: req.body.story,
     school: req.body.school,
     specialty: req.body.specialty,
     isChatting: false,
     email: req.body.email,
+    isOnline: false,
     password: hashedPassword
   }) 
 
@@ -133,7 +148,7 @@ router.put('/update/:supporterID', function (req, res) {
       [{ "_id": req.params.supporterID }]
   }, {
     nickname: req.body.nickname,
-    //isAvailable: false, //assuming we want the user to sign in after registration
+    //isOnline: false, //assuming we want the user to sign in after registration
     availabilityHours: req.body.availabilityHours, //!
     story: req.body.story,
     school: req.body.school,
