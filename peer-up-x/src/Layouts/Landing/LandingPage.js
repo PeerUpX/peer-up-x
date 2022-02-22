@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LandingPage.module.css";
-import {ReactComponent as Logo} from "../peerUpLogo.svg";
+import {ReactComponent as Logo} from "../../peerUpLogo.svg";
 import { Link } from "react-router-dom";
 export default function LandingPage() {
     return (

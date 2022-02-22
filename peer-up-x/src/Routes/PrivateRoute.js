@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const PrivateRoute = () => {
     const auth = useAuth(); // determine if authorized, from context or however you're doing it

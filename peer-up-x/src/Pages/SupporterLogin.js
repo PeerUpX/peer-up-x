@@ -1,10 +1,10 @@
 //import styled from 'styled-components'
 import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
-import { useAuth } from './contexts/AuthContext'
+import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from "./Login.module.css";
-import {ReactComponent as Logo} from "./peerUpLogo.svg";
+import styles from "../Login.module.css";
+import {ReactComponent as Logo} from "../peerUpLogo.svg";
 
 export default function SupporterLogin() {
   const emailRef = useRef()

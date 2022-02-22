@@ -1,8 +1,8 @@
 import React, {useState, useRef} from "react"
 import {Form, Card, Alert, Button} from "react-bootstrap"
-import { useAuth } from './contexts/AuthContext'
+import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from "./Login.module.css";
+import styles from "../Login.module.css";
 
 export default function SupporterSignup() {
   const emailRef = useRef()

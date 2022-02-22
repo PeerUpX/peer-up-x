@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './SupporterDashboard.module.css'
 import SupporterNotif from "./SupporterNotif"
-import SideBar from "../SideBar";
+import SideBar from "../../Layouts/SideBar";
 import CompletedCall from "./CompletedCall"
 
 export default function SupporterDashboard(props) {
