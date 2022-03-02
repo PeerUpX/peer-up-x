@@ -1,5 +1,5 @@
 import styles from './SupporterProfile.module.css';
-import SideBar from '../SideBar';
+import SideBar from '../Layouts/SideBar';
 import SupporterEditor from './SupporterEditor';
 import './SupporterProfile.css'
 import moment from 'moment';

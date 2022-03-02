@@ -1,13 +1,13 @@
 import { AuthProvider } from './contexts/AuthContext';
-import SupporterLogin from './SupporterLogin';
-import SupporterSignup from './SupporterSignup';
-import SupporterDashboard from './Dashboard/SupporterDashboard'
+import SupporterLogin from './Pages/SupporterLogin';
+import SupporterSignup from './Pages/SupporterSignup';
+import SupporterDashboard from './Pages/Dashboard/SupporterDashboard'
 import SupporterProfile from './Profile/SupporterProfile';
 import UserDashboard from './User/UserDashboard';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import {useAuth} from './contexts/AuthContext';
-import ForgotPassword from './ForgotPassword';
-import LandingPage from './Landing/LandingPage';
+import ForgotPassword from './Pages/ForgotPassword';
+import LandingPage from './Layouts/Landing/LandingPage';
 
 //className="d-flex align-items-center justify-content-center"
 function PrivateRoute({ children }) {
