@@ -4,62 +4,14 @@ import { ReactComponent as Logo } from "../peerUpLogo.svg";
 import Modal from "../Components/Modal";
 // import { Link } from "react-router-dom";
 
-// TODO: delete this
-// async function getSupporters() {
-//   return fetch('http://localhost:3000/supporters/fetchAll'), {
-//     method : 'GET', }
-//     .then(data => data.json())
-// }
-
 export default function LandingPage() {
-  // const [supporterData, setSupporterData] = useState([]);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //   const response = await fetch('')
-  //   const suppData = await response.json()
-  //   setSupporterData(suppData.slice(0, 6))
-  //         }
-  //   fetchData()
-  //   }, [])
   const [show, setShow] = useState(false);
   const [num, setNum] = useState(0);
   const [supporterData, setSupporterData] = useState([]);
 
-  // const supporterData = [
-  //   {
-  //     name: "Apple",
-  //     languages: "English, French",
-  //     specialty: "studies,anxiety",
-  //     num: "1"
-  //   },
-  //   {
-  //     name: "Pear",
-  //     languages: "Hindi, English",
-  //     specialty: "studies,coping,relationships",
-  //     num: "2"
-  //   },
-  //   {
-  //     name: "Oolong",
-  //     languages: "English, German",
-  //     specialty: "studies,anxiety",
-  //     num: "3"
-  //   },
-  //   {
-  //     name: "Sleepy Bruin",
-  //     languages: "English, Chinese",
-  //     specialty: "studies,coping,relationships",
-  //     num: "4"
-  //   },
-  //   {
-  //     name: "Guava",
-  //     languages: "English, Spanish",
-  //     specialty: "academics,coping",
-  //     num: "5"
-  //   },
-  // ];
-
   // get request to get all supporters from database
   useEffect(() => {
+    console.log(URL)
     fetch('http://localhost:3000/supporters/fetchAll')
     .then(response => response.json())
     .then(data => {
