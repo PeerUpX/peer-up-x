@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image, Table } from 'react-bootstrap';
+import { Button, Image, Table, Badge } from 'react-bootstrap';
 
 const modalStyles = {
     position: 'fixed',
@@ -8,7 +8,9 @@ const modalStyles = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#fff',
     padding: '300px',
-    zIndex: 1000
+    paddingLeft: '800px',
+    zIndex: 1000,
+    borderRadius: '10px',
 }
 
 const backgroundStyles = {
@@ -29,16 +31,16 @@ const buttonStyles = {
 
 const titleStyles = {
     position: 'absolute',
-    top: '20px',
-    left: '200px',
+    top: '50px',
+    left: '300px',
 }
 
 const imageStyles = {
     position: 'absolute',
     width: '150px',
     height: '150px',
-    top: '10px',
-    left: '10px',
+    top: '50px',
+    left: '50px',
 }
  
 const bookNowStyles = {
@@ -57,12 +59,13 @@ export default function Modal({open, onClose, data}) {
             <div style={modalStyles}>
                 <Image roundedCircle style={imageStyles} src='https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'/>
                 <div style={titleStyles}>
-                    <h1><b>{data.name}</b></h1>
-                    <p>Languages: {data.languages}</p>
-                    <p>Specialties: {data.specialty}</p>
+                    <h1>
+                        <b>{data.name}</b>
+                    </h1>
+                    <p><i>Languages: {data.languages}</i></p>
                 </div>
                 <Button style={bookNowStyles}>Book Now</Button>
-                <div style={{position: "absolute", top: "170px", left: "10px"}}>
+                <div style={{position: "absolute", top: "220px", left: "50px"}}>
                     <h4><b>Future Availability</b></h4>
                     <Table striped bordered hover>
                         <thead>
@@ -88,7 +91,7 @@ export default function Modal({open, onClose, data}) {
                         </tbody>
                     </Table>
                 </div>
-                <div style={{position: "absolute", top: "170px", left: "400px"}}>
+                <div style={{position: "absolute", top: "220px", left: "600px"}}>
                     <h4><b>Why I joined PeerUp</b></h4>
                     <p>
                     <small>
