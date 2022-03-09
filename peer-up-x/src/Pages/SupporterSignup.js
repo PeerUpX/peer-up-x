@@ -13,8 +13,42 @@ export default function SupporterSignup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  constructor(props)
+    {
+        super(props);
+        this.state = {
+            name: "", 
+            username: "", 
+            password: "", 
+            password_confirm: "", 
+            isSignedUp: false,
+            loggedIn: false,
+            successCode: 0, 
+        };
+    }
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    const result = await fetch("localhost:3000/register", 
+    {
+      method: 'POST',
+      headers: {
+          'Content-Type': "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(this.state) /* this is the data being posted */
+    })
+    
+    const res = await result.json();  /* this is the res sent by the backend */
+  
+    console.log(res);
+        
+    const loggedIn = res.successCode;
+    
+    if(loggedIn == 201)
+    {
+      console.log("Register Successful")
+    }
 
     if(passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
@@ -38,7 +72,7 @@ export default function SupporterSignup() {
       <Card.Body>
         <h2 className={styles.header3}>Sign Up</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
+        <Form action="localhost:3000/register" onSubmit={handleSubmit}>
           <Form.Group className={styles.form}>
             {/* <Form.Label>Email</Form.Label> */}
             <Form.Control type="email" placeholder="Email" ref={emailRef} required />
