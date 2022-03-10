@@ -63,9 +63,9 @@ router.post("/register", async (req, res) => {
       })
     });
 
-    return res.status(201).json({
-      message: "Registration successful!"
-    })
+  return res.status(201).json({
+    message: "Registration successful!"
+  })
 
 });
 
@@ -91,29 +91,31 @@ router.post("/login", async (req, res) => {
   }
 
   // comparing inputPassword with encrypted password from database
-  bcrypt.compare(inputPassword, supporterTryingToLogin.password, function(err, result) {
-      if(err){
-        return res.status(500).json({
-          message: "Bcrypt encountered an error comparing passwords."
-        });
-      }
-      if(result == true){
-        res.cookie("email", supporterTryingToLogin.email, {
-          maxAge: 7 * 24 * 60 * 60 * 1000,
-          secure: ((env === 'development') ? false : true),
-          httpOnly: true,
-          sameSite: 'lax'
+  bcrypt.compare(inputPassword, supporterTryingToLogin.password, function (err, result) {
+
+    if (err) {
+      return res.status(500).json({
+        message: "Bcrypt encountered an error comparing passwords."
+      });
+    }
+    if (result == true) {
+      const cookieDict = { "email": supporterTryingToLogin.email, "id": supporterTryingToLogin._id }
+      res.cookie("info", cookieDict, {
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        secure: ((env === 'development') ? false : true),
+        httpOnly: true,
+        sameSite: 'lax'
       });
       return res.status(200).json({
         message: "Successful login!"
       });
-      }
-      else{
-        // returning 401 if password is invalid
-        return res.status(401).json({
-          message: "Invalid password."
-        });
-      }
+    }
+    else {
+      // returning 401 if password is invalid
+      return res.status(401).json({
+        message: "Invalid password."
+      });
+    }
   });
 });
 
@@ -140,7 +142,7 @@ router.get('/fetch/:email', function (req, res) {
 // update endpoint for supporters that uses the supporter's preloaded cookie to make updates to their doc in the db
 // using the body provided in the request
 router.put('/update', async (req, res) => {
-  
+
   const requestorID = req.cookies.info.id;
 
   // return unauthorized if requestor doesnt have a cookie set
@@ -150,7 +152,7 @@ router.put('/update', async (req, res) => {
     });
   }
 
-  let orig = await Supporter.findOne({"id" : requestorID}).catch(err => {
+  let orig = await Supporter.findOne({ "id": requestorID }).catch(err => {
     // error thrown by mongo while finding the supporter
     return res.status(500).json({
       message: "Internal server error, please try again!",
