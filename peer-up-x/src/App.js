@@ -1,24 +1,19 @@
-import { AuthProvider } from './contexts/AuthContext';
+//import { AuthProvider } from './contexts/AuthContext';
 import SupporterLogin from './Pages/SupporterLogin';
 import SupporterSignup from './Pages/SupporterSignup';
 import SupporterDashboard from './Pages/Dashboard/SupporterDashboard'
 import SupporterProfile from './Profile/SupporterProfile';
 import UserDashboard from './User/UserDashboard';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import {useAuth} from './contexts/AuthContext';
+// import {useAuth} from './contexts/AuthContext';
 import ForgotPassword from './Pages/ForgotPassword';
 import LandingPage from './Layouts/Landing/LandingPage';
 
 //className="d-flex align-items-center justify-content-center"
-function PrivateRoute({ children }) {
-  const {currentUser} = useAuth();
-  return currentUser ? children : <Navigate to="/login" />;
-}
 
 function App() {
   return (
       <Router>
-        <AuthProvider>
           <Routes>
               <Route exact path="/" element={<LandingPage/>} />
               <Route exact path="/signup" element={<SupporterSignup/>} />
@@ -27,17 +22,13 @@ function App() {
             <Route
               path="/dashboard"
               element={
-              <PrivateRoute>
                 <SupporterDashboard />
-              </PrivateRoute>
               }
             />    
             <Route
               path="/profile"
               element={
-              <PrivateRoute>
                 <SupporterProfile />
-              </PrivateRoute>
               }
             /> 
             <Route
@@ -47,7 +38,6 @@ function App() {
               }
             />            
         </Routes>
-        </AuthProvider>
       </Router>
   );
 }

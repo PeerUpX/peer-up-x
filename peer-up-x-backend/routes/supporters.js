@@ -63,7 +63,9 @@ router.post("/register", async (req, res) => {
       })
     });
 
-  res.json(201, newSupporter);
+    return res.status(201).json({
+      message: "Registration successful!"
+    })
 
 });
 
@@ -102,7 +104,9 @@ router.post("/login", async (req, res) => {
           httpOnly: true,
           sameSite: 'lax'
       });
-        res.json(200);
+      return res.status(200).json({
+        message: "Successful login!"
+      });
       }
       else{
         // returning 401 if password is invalid
