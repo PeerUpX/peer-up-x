@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const Supporter = require("../models/Supporter");
 const connectDB = require('../db');
+const e = require('express');
 
 const router = express.Router();
 const env = process.env.NODE_ENV || 'development';
@@ -46,6 +47,7 @@ router.post("/register", async (req, res) => {
     nickname: req.body.nickname,
     availabilityHours: req.body.availabilityHours,
     story: req.body.story,
+    whyPeerUp: req.body.whyPeerUp,
     school: req.body.school,
     specialty: req.body.specialty,
     isChatting: false,
@@ -63,7 +65,9 @@ router.post("/register", async (req, res) => {
       })
     });
 
-  res.json(201, newSupporter);
+  return res.status(201).json({
+    message: "Registration successful!"
+  })
 
 });
 
@@ -90,20 +94,26 @@ router.post("/login", async (req, res) => {
 
   // comparing inputPassword with encrypted password from database
   bcrypt.compare(inputPassword, supporterTryingToLogin.password, function (err, result) {
+
     if (err) {
       return res.status(500).json({
         message: "Bcrypt encountered an error comparing passwords."
       });
     }
     if (result == true) {
-      const cookieDict = {"email": supporterTryingToLogin.email, "id": supporterTryingToLogin._id}
-      res.cookie("info",cookieDict, {
+      const cookieDict = { "email": supporterTryingToLogin.email, "id": supporterTryingToLogin._id }
+      res.cookie("info", cookieDict, {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         secure: ((env === 'development') ? false : true),
-        httpOnly: true,
         sameSite: 'lax'
       });
-      res.json(200);
+
+      res.status(200).json({
+        message: "Successful login!"
+      });
+
+      
+
     }
     else {
       // returning 401 if password is invalid
@@ -112,33 +122,10 @@ router.post("/login", async (req, res) => {
       });
     }
   });
-
 });
 
 // fetch a supporter by email address
-router.get('/fetch/:email', function (req, res) {
-  Supporter.findOne({ // search by an email -> mostly so that we dont get multiple accounts with the same user
-    $or:
-      [{ "email": req.params.email }]
-  }).then(supporter => {
-    if (!supporter) {
-      return res.status(200).send({
-        message: "Supporter not found"
-      })
-    }
-    return res.status(200).send({ supporter, message: "Supporter found!" });
-  }).catch(err => {
-    return res.status(500).send({
-      message: "Internal server error, please try again later!",
-      error: err
-    })
-  })
-});
-
-// update endpoint for supporters that uses the supporter's preloaded cookie to make updates to their doc in the db
-// using the body provided in the request
-router.put('/update', async (req, res) => {
-  
+router.get('/fetch', async (req, res) => {
   const requestorID = req.cookies.info.id;
 
   // return unauthorized if requestor doesnt have a cookie set
@@ -148,7 +135,31 @@ router.put('/update', async (req, res) => {
     });
   }
 
-  let orig = await Supporter.findOne({"id" : requestorID}).catch(err => {
+  let orig = await Supporter.findOne({ "_id": requestorID }).catch(err => {
+    // error thrown by mongo while finding the supporter
+    return res.status(500).json({
+      message: "Internal server error, please try again!",
+      error: err
+    })
+  });
+  
+  return res.json(orig);
+});
+
+// update endpoint for supporters that uses the supporter's preloaded cookie to make updates to their doc in the db
+// using the body provided in the request
+router.put('/update', async (req, res) => {
+
+  const requestorID = req.cookies.info.id;
+
+  // return unauthorized if requestor doesnt have a cookie set
+  if (!requestorID) {
+    return res.status(401).json({
+      message: "You are not authorized to use this endpoint."
+    });
+  }
+
+  let orig = await Supporter.findOne({ "id": requestorID }).catch(err => {
     // error thrown by mongo while finding the supporter
     return res.status(500).json({
       message: "Internal server error, please try again!",
