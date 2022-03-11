@@ -8,6 +8,7 @@ const SupporterSchema = new Schema({
     password: {type: String, required: true},
     availabilityHours: Array, //come back to it later; probably actually paired entires Date, array of boolean
     story : String,
+    whyPeerUp: String,
     school : String, // might add later enum option
     specialty: String, // options
     isChatting: Boolean,

@@ -3,11 +3,12 @@ import {React, useRef, useState} from "react"
 import { Form, Card, Button } from "react-bootstrap"
 import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 //import { useAuth } from '../contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import styles from "../Login.module.css";
 import { ReactComponent as Logo } from "../peerUpLogo.svg";
 
-export default function SupporterLogin() {
+export default function SupporterLogin(props) {
+
   const emailRef = useRef()
   const passwordRef = useRef()
   const [error, setError] = useState("");
@@ -27,6 +28,7 @@ export default function SupporterLogin() {
         headers: {
           'Content-Type': "application/json; charset=utf-8",
         },
+        credentials: 'include',
         body: JSON.stringify({"email": emailRef.current.value, "password": passwordRef.current.value}) /* this is the data being posted */
       })
     const res = await result.json();  /* this is the res sent by the backend */

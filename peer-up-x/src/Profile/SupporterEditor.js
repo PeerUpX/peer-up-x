@@ -1,13 +1,17 @@
 import styles from './SupporterProfile.module.css';
 import { useState } from 'react';
 export default function SupporterEditor(props){
+  console.log('inside editor');
+  
+  const supporterInfo = props.supporterInfo;
   const [editMode, setEditMode] = useState(false);
+  console.log(supporterInfo);
 
-  const [name, changeName] = useState("Oolong");
-  const [spec, changeSpec] = useState("academics, coping");
-  const [lang, changeLang] = useState("English/Chinese");
-  const [about, changeAbout] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-  const [why, changeWhy] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+  const [name, changeName] = useState(supporterInfo.nickname ? supporterInfo.nickname : "");
+  const [spec, changeSpec] = useState(supporterInfo.specialty ? supporterInfo.specialty : "");
+  const [lang, changeLang] = useState(supporterInfo.languages ? supporterInfo.languages: "");
+  const [about, changeAbout] = useState(supporterInfo.story ? supporterInfo.story : "");
+  const [why, changeWhy] = useState(supporterInfo.whyPeerUp ? supporterInfo.whyPeerUp : "");
 
   const InfoParagraph = ({header, subtitle}) => {
     return(
@@ -50,8 +54,8 @@ export default function SupporterEditor(props){
         <div className = {styles.mainInfoColBox}>
           <div className = {`${styles.circleContainer} ${styles.one}`}/>
           <h1 className = {styles.textLarge}>{name}</h1>
-          <h2 className = {styles.textMediumLight}>{spec}</h2>
-          <h2 className = {styles.textMediumLight}>{lang}</h2>
+          <h2 className = {styles.textMediumLight}>Speciality: {spec}</h2>
+          <h2 className = {styles.textMediumLight}>Languages: {lang}</h2>
         </div>
         <div className = {styles.mainInfoColBox}>
           <InfoParagraph header = {"About Me"} subtitle = {about}></InfoParagraph>
